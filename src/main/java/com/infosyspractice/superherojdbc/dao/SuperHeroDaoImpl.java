@@ -39,7 +39,10 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
+
+    // Exercise: Fill out 4 other CRUD methods (GetById, GetAll, Update, Delete)
+    // Make some more fun queries like get by power, strength, etc.
+    // Alter the save method so that it retrieves the id from the database and store it in the superhero object that you return (Recommend doing online research)
 }
