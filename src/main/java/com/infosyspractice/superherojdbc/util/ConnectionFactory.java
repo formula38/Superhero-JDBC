@@ -7,11 +7,11 @@ import java.util.ResourceBundle;
 
 public class ConnectionFactory {
 
-    private Connection connection = null;
+    private static Connection connection = null;
 
     private ConnectionFactory(){}
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         if (connection == null) {
             ResourceBundle bundle = ResourceBundle.getBundle("DbConfig");
 
