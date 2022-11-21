@@ -22,7 +22,7 @@ public class SuperHeroDaoDummyImpl implements SuperHeroDao {
     }
 
     @Override
-    public SuperHero update(SuperHero superHero) {
+    public SuperHero update(SuperHero s) {
         return null;
     }
 

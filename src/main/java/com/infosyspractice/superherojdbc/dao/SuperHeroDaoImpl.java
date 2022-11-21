@@ -2,10 +2,6 @@ package com.infosyspractice.superherojdbc.dao;
 
 import com.infosyspractice.superherojdbc.model.SuperHero;
 import com.infosyspractice.superherojdbc.util.ConnectionFactory;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.EnableMBeanExport;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
