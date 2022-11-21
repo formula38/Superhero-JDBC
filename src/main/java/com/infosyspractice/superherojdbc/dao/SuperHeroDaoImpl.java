@@ -124,20 +124,25 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
     }
 
     @Override
-    public SuperHero update(SuperHero superHero) {
-
-        SuperHero hero = new SuperHero();
+    public SuperHero update(SuperHero s) {
 
         try {
-            SuperHero s = new SuperHero();
-            String sql = "UPDATE ? SET ? = ? WHERE ? = ?";
+            String sql = "UPDATE superhero SET superhero_name = ?, super_power = ?, strength = ?, weakness = ?, franchise = ?, world = ? WHERE id = ?;";
             PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, s.getSuperheroName());
+            stmt.setString(2, s.getSuperPower());
+            stmt.setInt(3, s.getStrength());
+            stmt.setString(4, s.getWeakness());
+            stmt.setString(5, s.getFranchise());
+            stmt.setString(6, s.getWorld());
+            stmt.setInt(7, s.getId());
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return s;
     }
 
     @Override
