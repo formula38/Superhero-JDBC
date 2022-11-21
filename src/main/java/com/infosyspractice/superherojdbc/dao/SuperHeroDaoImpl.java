@@ -126,15 +126,31 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
     @Override
     public SuperHero update(SuperHero superHero) {
 
-        SuperHero s = new SuperHero();
-        String sql = "";
+        SuperHero hero = new SuperHero();
+
+        try {
+            SuperHero s = new SuperHero();
+            String sql = "UPDATE ? SET ? = ? WHERE ? = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
 
     @Override
     public void delete(int id) {
+        try {
+            String sql = "DELETE FROM superhero WHERE id = ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Exercise: Fill out 4 other CRUD methods (GetById, GetAll, Update, Delete)
