@@ -23,7 +23,7 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
 
     @Override
     public SuperHero save(SuperHero superHero) {
-        String sql = "insert into superhero values (default, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO superhero values (default, ?, ?, ?, ?, ?, ?);";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, superHero.getSuperheroName());
@@ -50,7 +50,7 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
 
         SuperHero s = new SuperHero();
 
-        String sql = "select * from superhero where id = ?;";
+        String sql = "SELECT * FROM superhero WHERE id = ?;";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
@@ -80,7 +80,6 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return s;
     }
 
