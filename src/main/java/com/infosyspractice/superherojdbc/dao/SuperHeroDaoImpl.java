@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SuperHeroDaoImpl implements SuperHeroDao {
@@ -85,11 +86,49 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
 
     @Override
     public List<SuperHero> getAll() {
-        return null;
+
+        List<SuperHero> heroes = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM superhero;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String superheroName = rs.getString("superhero_name");
+                String superPower = rs.getString("super_power");
+                int strength = rs.getInt("strength");
+                String weakness = rs.getString("weakness");
+                String franchise = rs.getString("franchise");
+                String world = rs.getString("world");
+
+                SuperHero s = new SuperHero();
+
+                s.setId(id);
+                s.setSuperheroName(superheroName);
+                s.setSuperPower(superPower);
+                s.setStrength(strength);
+                s.setWeakness(weakness);
+                s.setFranchise(franchise);
+                s.setWorld(world);
+
+                heroes.add(s);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return heroes;
     }
 
     @Override
     public SuperHero update(SuperHero superHero) {
+
+        SuperHero s = new SuperHero();
+        String sql = "";
+
         return null;
     }
 
