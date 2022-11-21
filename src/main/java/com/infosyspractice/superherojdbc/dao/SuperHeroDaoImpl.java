@@ -127,7 +127,16 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
     public SuperHero update(SuperHero s) {
 
         try {
-            String sql = "UPDATE superhero SET superhero_name = ?, super_power = ?, strength = ?, weakness = ?, franchise = ?, world = ? WHERE id = ?;";
+            String sql = "UPDATE superhero " +
+                    "SET " +
+                    "superhero_name = ?, " +
+                    "super_power = ?, " +
+                    "strength = ?," +
+                    " weakness = ?," +
+                    " franchise = ?, " +
+                    "world = ? " +
+                    "WHERE id = ?;";
+
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, s.getSuperheroName());
