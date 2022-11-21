@@ -3,6 +3,8 @@ package com.infosyspractice.superherojdbc;
 import com.infosyspractice.superherojdbc.dao.SuperHeroDao;
 import com.infosyspractice.superherojdbc.dao.SuperHeroDaoImpl;
 import com.infosyspractice.superherojdbc.model.SuperHero;
+import com.infosyspractice.superherojdbc.service.SuperHeroService;
+import com.infosyspractice.superherojdbc.util.DaoFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -22,8 +24,8 @@ public class SuperHeroJdbcApplication {
                 "Harlem"
         );
 
-        SuperHeroDao superHeroDao = new SuperHeroDaoImpl();
-        superHeroDao.save(superHero);
+        SuperHeroService superHeroService = new SuperHeroService(DaoFactory.getSuperHeroDoaDummy());
+        superHeroService.save(superHero);
         System.out.println(superHero.getId());
     }
 
