@@ -5,10 +5,13 @@ import com.infosyspractice.superherojdbc.util.ConnectionFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SuperHeroDaoImpl implements SuperHeroDao {
 
@@ -40,6 +43,60 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public SuperHero getById(int id) {
+
+        SuperHero s = new SuperHero();
+
+        String sql = "select * from superhero where id = ?;";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            ResultSet rs;
+
+            if ((rs = stmt.executeQuery()) != null) {
+                rs.next();
+
+                int returnedId = rs.getInt("id");
+                String superheroName = rs.getString("superhero_name");
+                String superPower = rs.getString("super_power");
+                int strength = rs.getInt("strength");
+                String weakness = rs.getString("weakness");
+                String franchise = rs.getString("franchise");
+                String world = rs.getString("world");
+
+                s.setId(returnedId);
+                s.setSuperheroName(superheroName);
+                s.setSuperPower(superPower);
+                s.setStrength(strength);
+                s.setWeakness(weakness);
+                s.setFranchise(franchise);
+                s.setWorld(world);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    }
+
+    @Override
+    public List<SuperHero> getAll() {
+        return null;
+    }
+
+    @Override
+    public SuperHero update(SuperHero superHero) {
+        return null;
+    }
+
+    @Override
+    public void delete(int id) {
+
     }
 
     // Exercise: Fill out 4 other CRUD methods (GetById, GetAll, Update, Delete)
