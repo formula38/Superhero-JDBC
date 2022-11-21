@@ -150,7 +150,6 @@ public class SuperHeroDaoImpl implements SuperHeroDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return s;
     }
 

@@ -11,7 +11,18 @@ public class SuperHeroService {
     }
 
     public SuperHero save(SuperHero s) {
-        this.superHeroDao.save(s);
-        return s;
+        return this.superHeroDao.save(s);
+    }
+
+    public SuperHero getById(int id) {
+        return this.superHeroDao.getById(id);
+    }
+
+    public SuperHero update(SuperHero s) {
+        return this.superHeroDao.update(s);
+    }
+
+    public void delete(int id) {
+        this.superHeroDao.delete(id);
     }
 }
